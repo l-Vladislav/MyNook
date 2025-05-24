@@ -1,0 +1,195 @@
+{
+	"$id": "https://schemas.mynook.dev/v1/project-structure.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "MyNook Project Structure Schema",
+	"description": "Validates the structure and metadata of MyNook project files for AI assistant consumption",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"type": "string",
+			"description": "JSON Schema URI reference"
+		},
+		"metadata": {
+			"type": "object",
+			"description": "Project-level metadata for version tracking and phase management",
+			"properties": {
+				"project_name": {
+					"type": "string",
+					"const": "MyNook",
+					"description": "Immutable project identifier"
+				},
+				"version": {
+					"type": "string",
+					"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$",
+					"description": "Semantic version of the structure specification"
+				},
+				"generated_at": {
+					"type": "string",
+					"format": "date",
+					"description": "ISO 8601 timestamp of structure generation"
+				},
+				"development_phase": {
+					"type": "string",
+					"enum": ["planning", "architecture", "development", "testing", "production"],
+					"description": "Current project development phase affecting file priorities"
+				},
+				"structure_hash": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{64}$",
+					"description": "SHA-256 hash of structure content for change detection"
+				}
+			},
+			"required": ["project_name", "version", "generated_at", "development_phase"],
+			"additionalProperties": false
+		},
+		"validation_config": {
+			"type": "object",
+			"description": "Configuration for automated structure validation",
+			"properties": {
+			"enforce_dependencies": {
+				"type": "boolean",
+				"default": true,
+				"description": "Whether to validate dependency chains"
+			},
+			"allow_orphaned_files": {
+				"type": "boolean", 
+				"default": false,
+				"description": "Whether to allow files without defined purposes"
+			},
+			"require_documentation": {
+				"type": "array",
+				"items": {"enum": ["critical", "high", "medium", "low"]},
+				"default": ["critical", "high"],
+				"description": "Priority levels requiring detailed documentation"
+			}
+			},
+			"additionalProperties": false
+		},
+		"structure": {
+			"type": "object",
+			"description": "Complete file and directory structure mapping",
+			"patternProperties": {
+				"^[a-zA-Z0-9.][a-zA-Z0-9/_.-]*/?$": {
+					"$ref": "#/$defs/structureNode"
+				}
+			},
+			"additionalProperties": false
+		},
+		"dependency_graph": {
+			"type": "object",
+			"description": "Computed dependency relationships for development ordering",
+			"properties": {
+			"critical_path": {
+				"type": "array",
+				"items": {"type": "string"},
+				"description": "Ordered list of files on the critical development path"
+			},
+			"parallel_groups": {
+				"type": "array",
+				"items": {
+				"type": "array",
+				"items": {"type": "string"}
+				},
+				"description": "Groups of files that can be developed in parallel"
+			},
+			"orphaned_nodes": {
+				"type": "array", 
+				"items": {"type": "string"},
+				"description": "Files with no dependencies or dependents"
+			}
+			},
+			"additionalProperties": false
+		}
+	},
+	"required": ["metadata", "structure"],
+	"additionalProperties": false,
+	"$defs": {
+		"structureNode": {
+			"type": "object",
+			"description": "Individual file or directory specification",
+			"properties": {
+				"type": {
+					"enum": ["file", "directory"],
+					"description": "Node type for filesystem validation"
+				},
+				"status": {
+					"enum": ["exists", "planned", "in_progress", "deprecated", "blocked"],
+					"description": "Current implementation status"
+				},
+				"priority": {
+					"enum": ["critical", "high", "medium", "low"],
+					"description": "Development priority level affecting resource allocation"
+				},
+				"purpose": {
+					"type": "string",
+					"minLength": 20,
+					"maxLength": 200,
+					"description": "Clear, concise explanation of file purpose for AI understanding"
+				},
+				"dependencies": {
+					"type": "array",
+					"items": {
+					"type": "string",
+					"pattern": "^[a-zA-Z0-9][a-zA-Z0-9/_.-]*/?$"
+					},
+					"uniqueItems": true,
+					"description": "Files that must exist before this file can be created/modified"
+				},
+				"consumers": {
+					"type": "array",
+					"items": {
+					"enum": ["developers", "ai_assistants", "stakeholders", "build_system", "documentation_generators"]
+					},
+					"uniqueItems": true,
+					"minItems": 1,
+					"description": "Systems or roles that directly use this file"
+				},
+				"tags": {
+					"type": "array",
+					"items": {
+					"enum": ["core", "config", "documentation", "tooling", "testing", "deployment", "security"]
+					},
+					"uniqueItems": true,
+					"description": "Categorical tags for filtering and organization"
+				},
+				"estimated_complexity": {
+					"enum": ["trivial", "simple", "moderate", "complex", "expert"],
+					"description": "Implementation complexity estimate for resource planning"
+				},
+				"tech_debt_notes": {
+					"type": "array",
+					"items": {
+					"type": "object",
+					"properties": {
+						"issue": {"type": "string", "minLength": 10},
+						"severity": {"enum": ["low", "medium", "high", "critical"]},
+						"remediation_effort": {"enum": ["hours", "days", "weeks"]},
+						"created_at": {"type": "string", "format": "date"}
+					},
+					"required": ["issue", "severity", "remediation_effort", "created_at"],
+					"additionalProperties": false
+					},
+					"description": "Technical debt tracking for continuous improvement"
+				},
+				"last_validated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Timestamp of last automated validation"
+				},
+				"checksum": {
+					"type": ["string", "null"],
+					"pattern": "^[a-f0-9]{32}$",
+					"description": "MD5 hash of file content for change detection"
+				}
+			},
+			"required": ["type", "status", "priority", "purpose", "consumers"],
+			"additionalProperties": false,
+			"if": {
+				"properties": {"status": {"const": "exists"}}
+			},
+			"then": {
+				"required": ["last_validated", "checksum"]
+			}
+		}
+	}
+}
