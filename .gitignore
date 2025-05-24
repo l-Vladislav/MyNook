@@ -1,0 +1,282 @@
+# MyNook Project Structure Validator - .gitignore
+
+# ===================================================
+# Node.js Dependencies & Package Management
+# ===================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# ===================================================
+# Runtime & Build Artifacts
+# ===================================================
+# Build output directories
+dist/
+build/
+out/
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Test artifacts
+.nyc_output
+
+# ===================================================
+# Environment & Configuration
+# ===================================================
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Config files with secrets
+config/local.json
+config/secrets.json
+
+# ===================================================
+# Temporary & Cache Files
+# ===================================================
+# Temporary folders
+tmp/
+temp/
+.cache/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ===================================================
+# Operating System Generated Files
+# ===================================================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===================================================
+# IDE & Editor Files
+# ===================================================
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+.ionide/
+
+# JetBrains IDEs
+.idea/
+*.swp
+*.swo
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===================================================
+# Project-Specific Files
+# ===================================================
+# Generated structure validation reports
+validation-reports/
+*.validation-report.json
+
+# Temporary schema files
+schemas/temp/
+schemas/*.temp.json
+
+# Development artifacts
+.structure-cache
+.dependency-graph-cache
+
+# Local development overrides
+docs/local/
+scripts/local/
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# ===================================================
+# Security & Sensitive Data
+# ===================================================
+# API keys and secrets
+.secrets
+*.key
+*.pem
+*.p12
+*.cert
+
+# Database files (if any local development DB)
+*.db
+*.sqlite
+*.sqlite3
+
+# ===================================================
+# Package Manager Lock Files
+# ===================================================
+# Uncomment if you want to ignore lock files
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ===================================================
+# Documentation Generation
+# ===================================================
+# Generated documentation
+docs/generated/
+.docusaurus/
+
+# ===================================================
+# Testing & Quality Assurance
+# ===================================================
+# Jest
+.jest-cache/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# ESLint cache
+.eslintcache
+
+# Prettier cache
+.prettiercache
+
+# ===================================================
+# Miscellaneous
+# ===================================================
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env*
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.* 
