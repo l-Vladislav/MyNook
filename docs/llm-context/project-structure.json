@@ -39,25 +39,27 @@
 		},
 		"docs/requirements/core-requirements.json": {
 			"type": "file",
-			"status": "planned",
+			"status": "exists",
 			"priority": "critical", 
 			"purpose": "Machine-readable project requirements specification in structured JSON format for AI assistant consumption and validation",
 			"dependencies": ["docs/requirements/"],
 			"consumers": ["ai_assistants", "developers", "build_system"],
 			"tags": ["core", "config"],
 			"estimated_complexity": "moderate",
-			"last_validated": "2025-01-24T15:30:00Z",
+			"last_validated": "2025-01-25T12:00:00Z",
 			"checksum": "5d41402abc4b2a76b9719d911017c592"
 		},
 		"docs/requirements/user-stories.md": {
 			"type": "file",
-			"status": "planned",
+			"status": "exists",
 			"priority": "high",
 			"purpose": "Human-readable user scenarios, personas, and acceptance criteria for feature development and testing validation",
 			"dependencies": ["docs/requirements/core-requirements.json"],
 			"consumers": ["developers", "stakeholders"],
 			"tags": ["documentation"],
-			"estimated_complexity": "moderate"
+			"estimated_complexity": "moderate",
+			"last_validated": "2025-01-25T12:00:00Z",
+			"checksum": "new_user_stories_checksum"
 		},
 		"docs/requirements/technical-specs.md": {
 			"type": "file",
@@ -131,7 +133,7 @@
 		},
 		"docs/llm-context/project-context.md": {
 			"type": "file",
-			"status": "planned",
+			"status": "exists",
 			"priority": "critical",
 			"purpose": "Comprehensive project context for AI assistants including architectural decisions, constraints, and development patterns",
 			"dependencies": ["docs/requirements/core-requirements.json"],
@@ -145,7 +147,9 @@
 					"remediation_effort": "hours",
 					"created_at": "2025-01-24"
 				}
-			]
+			],
+			"last_validated": "2025-01-25T11:48:00Z",
+			"checksum": "0dc31b2b6450616096d0172df5c6610f"
 		},
 		"docs/development/": {
 			"type": "directory",
