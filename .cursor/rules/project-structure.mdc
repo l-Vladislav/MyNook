@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# MyNook Project Structure
+
+## Project structure rules
+- Always follow the project structure requiremnents described in the file [project-structure.json](mdc:docs/llm-context/project-structure.json)
+- If you want to a new file or folder you need also add a structure node in the file [project-structure.json](mdc:docs/llm-context/project-structure.json)
+- Before adding a new node to the structure file [project-structure.json](mdc:docs/llm-context/project-structure.json) ask permission with fully decribed logic
+- While editing a file always check the purpose of this file
+- Auto-approve adding files to existing folders, ask permission only for new folder creation
+
+### Documentation Structure
+- `docs/llm-context/` - AI assistant context and guidance
+
+### Reference Files
+- **Complete Structure**: [project-structure.json](mdc:docs/llm-context/project-structure.json)
+- **Core Requirements**: [core-requirements.json](mdc:docs/llm-context/core-requirements.json)

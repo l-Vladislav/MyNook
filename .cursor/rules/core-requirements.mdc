@@ -1,0 +1,23 @@
+---
+description: core project requirements or any other requrements
+globs: 
+alwaysApply: false
+---
+# MyNook Core Requirements
+
+## Critical Constraints (Always Check First)
+- Max 20 cards per workspace, 10 workspaces per user
+- Grid: 32px resolution, cards 2x2 to 8x8
+- Performance: < 3s load, < 16ms drag latency, < 100mb memory
+- Stack: Angular 17+ + .NET Core 6+ + Firebase
+
+## Detailed Specifications
+- Follow complete requirements in [core-requirements.json](mdc:docs/llm-context/core-requirements.json)
+- Provide feedback for requirement changes
+- Warn me if you don't understand requirements or they are inconsistent
+
+## Context-Specific Rules
+- Follow complete requirements in @core-requirements.json
+- When adding cards: Check max_cards_per_workspace limit
+- When implementing drag: Respect grid_resolution and performance_limit
+- When changing data models: Update both frontend and backend schemas

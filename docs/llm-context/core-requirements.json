@@ -1,0 +1,245 @@
+{
+	"metadata": {
+		"project_name": "MyNook",
+		"version": "1.0.0-alpha",
+		"target_release": "MVP",
+		"last_updated": "2025-01-25",
+		"complexity_level": "medium",
+		"development_stage": "planning"
+	},
+	"project_scope": {
+		"type": "personal_productivity_dashboard",
+		"architecture_pattern": "spa_with_api",
+		"deployment_model": "self_hosted",
+		"user_scale": "single_tenant_multi_user",
+		"concurrent_users": 50,
+		"data_volume_per_user": 100
+	},
+	"technical_stack": {
+		"frontend": {
+			"framework": "angular",
+			"version": ">=17.0.0",
+			"language": "typescript",
+			"state_management": "rxjs_services",
+			"ui_library": "angular_material",
+			"build_tool": "angular_cli"
+		},
+		"backend": {
+			"framework": "dotnet_core",
+			"version": ">=6.0.0",
+			"language": "csharp",
+			"api_pattern": "rest",
+			"architecture": "clean_architecture"
+		},
+		"database": {
+			"primary": "firebase_firestore",
+			"caching": "indexeddb",
+			"sync_strategy": "manual_save"
+		},
+		"authentication": {
+			"provider": "firebase_auth",
+			"token_type": "jwt",
+			"social_login": ["google", "github"],
+			"session_management": "firebase_sdk"
+		}
+	},
+	"core_features": {
+		"workspace_management": {
+			"priority": "critical",
+			"multi_workspace": true,
+			"max_workspaces_per_user": 10,
+			"workspace_sharing": false,
+			"real_time_collaboration": false
+		},
+		"card_system": {
+			"priority": "critical",
+			"max_cards_per_workspace": 20,
+			"card_types": [
+			{
+				"type": "text_note",
+				"priority": "critical",
+				"features": ["rich_text", "markdown_support"]
+			},
+			{
+				"type": "image_card",
+				"priority": "high",
+				"features": ["drag_drop_upload", "resize"]
+			},
+			{
+				"type": "link_card",
+				"priority": "high",
+				"features": ["url_preview", "favicon_fetch"]
+			},
+			{
+				"type": "iframe_card",
+				"priority": "medium",
+				"features": ["sandboxed_embed", "responsive_sizing"]
+			}
+			]
+		},
+		"grid_system": {
+			"priority": "critical",
+			"grid_resolution": 32,
+			"min_card_size": [2, 2],
+			"max_card_size": [8, 8],
+			"collision_detection": true,
+			"snap_to_grid": true,
+			"responsive_breakpoints": {
+				"mobile": 768,
+				"tablet": 1024,
+				"desktop": 1200
+			}
+		},
+		"drag_drop": {
+			"priority": "critical",
+			"touch_support": true,
+			"resize_handles": true,
+			"visual_feedback": true,
+			"performance_limit": 20
+		}
+	},
+	"technical_constraints": {
+		"performance": {
+			"initial_load_time": "< 3s",
+			"drag_operation_latency": "< 16ms",
+			"save_operation_timeout": "< 5s",
+			"memory_usage_limit": "< 100mb"
+		},
+		"browser_support": {
+			"chrome": ">=90",
+			"firefox": ">=88",
+			"safari": ">=14",
+			"edge": ">=90",
+			"ie_support": false
+		},
+		"mobile_requirements": {
+			"responsive_design": true,
+			"touch_interactions": true,
+			"viewport_adaptation": true,
+			"pwa_support": false
+		},
+		"security": {
+			"data_encryption": "transit_only",
+			"gdpr_compliance": false,
+			"audit_logging": false,
+			"rate_limiting": true
+		}
+	},
+	"data_models": {
+		"workspace": {
+			"fields": {
+			"id": "string",
+			"name": "string",
+			"user_id": "string",
+			"created_at": "timestamp",
+			"last_modified": "timestamp",
+			"grid_size": "grid_size_object",
+			"cards": "card_array",
+			"settings": "workspace_settings_object"
+			},
+			"constraints": {
+			"name_max_length": 100,
+			"max_cards": 20
+			}
+		},
+		"card": {
+			"fields": {
+				"id": "string",
+				"type": "card_type_enum",
+				"position": "position_object",
+				"content": "dynamic_object",
+				"created_at": "timestamp",
+				"last_modified": "timestamp"
+			},
+				"constraints": {
+				"content_max_size": "1mb",
+				"position_bounds": "grid_constraints"
+			}
+		},
+		"user": {
+			"fields": {
+				"id": "string",
+				"email": "string",
+				"display_name": "string",
+				"created_at": "timestamp",
+				"last_login": "timestamp"
+			},
+			"managed_by": "firebase_auth"
+		}
+	},
+	"api_specifications": {
+		"base_url": "/api/v1",
+		"authentication": "bearer_jwt",
+		"response_format": "json",
+		"error_handling": "standard_http_codes",
+		"endpoints": {
+			"workspaces": {
+			"get_all": "GET /workspaces",
+			"get_by_id": "GET /workspaces/{id}",
+			"create": "POST /workspaces",
+			"update": "PUT /workspaces/{id}",
+			"delete": "DELETE /workspaces/{id}"
+			},
+			"cards": {
+			"get_by_workspace": "GET /workspaces/{id}/cards",
+			"create": "POST /workspaces/{id}/cards",
+			"update": "PUT /cards/{id}",
+			"delete": "DELETE /cards/{id}",
+			"bulk_update": "PATCH /workspaces/{id}/cards"
+			}
+		}
+	},
+	"development_priorities": {
+		"phase_1_mvp": {
+			"duration_estimate": "8_weeks",
+			"features": [
+			"user_authentication",
+			"basic_workspace_management",
+			"text_note_cards",
+			"drag_drop_functionality",
+			"manual_save_system"
+			]
+		},
+		"phase_2_enhancement": {
+			"duration_estimate": "4_weeks",
+			"features": [
+			"additional_card_types",
+			"mobile_optimization",
+			"performance_improvements",
+			"error_handling_enhancement"
+			]
+		}
+	},
+	"quality_gates": {
+		"code_coverage": 80,
+		"typescript_strict_mode": true,
+		"eslint_zero_warnings": true,
+		"bundle_size_limit": "2mb",
+		"lighthouse_performance": 90,
+		"accessibility_score": 85
+	},
+	"integration_points": {
+		"firebase": {
+			"services": ["auth", "firestore"],
+			"sdk_version": ">=9.0.0",
+			"security_rules": true
+		},
+		"external_apis": {
+			"url_preview": "optional",
+			"image_processing": "client_side_only"
+		}
+	},
+	"deployment_requirements": {
+		"environment": "docker_container",
+		"reverse_proxy": "nginx",
+		"ssl_termination": true,
+		"static_file_serving": true,
+		"health_checks": true
+	},
+	"monitoring_observability": {
+		"error_tracking": false,
+		"performance_monitoring": false,
+		"user_analytics": false,
+		"logging_level": "error_only"
+	}
+}
