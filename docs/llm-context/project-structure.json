@@ -3,7 +3,7 @@
 	"metadata": {
 		"project_name": "MyNook",
 		"version": "1.0.0",
-		"generated_at": "2025-01-24",
+		"generated_at": "2025-01-25",
 		"development_phase": "planning",
 		"structure_hash": "a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5"
 	},
@@ -22,7 +22,7 @@
 			"consumers": ["developers", "ai_assistants", "stakeholders"],
 			"tags": ["core", "documentation"],
 			"estimated_complexity": "simple",
-			"last_validated": "2025-01-24T15:30:00Z",
+			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": null
 		},
 		"docs/requirements/": {
@@ -34,90 +34,20 @@
 			"consumers": ["developers", "ai_assistants", "stakeholders"],
 			"tags": ["core", "documentation"],
 			"estimated_complexity": "simple",
-			"last_validated": "2025-01-24T15:30:00Z",
+			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": null
 		},
-		"docs/requirements/core-requirements.json": {
+		"docs/llm-context/core-requirements.json": {
 			"type": "file",
 			"status": "exists",
 			"priority": "critical", 
 			"purpose": "Machine-readable project requirements specification in structured JSON format for AI assistant consumption and validation",
-			"dependencies": ["docs/requirements/"],
+			"dependencies": ["docs/llm-context/"],
 			"consumers": ["ai_assistants", "developers", "build_system"],
 			"tags": ["core", "config"],
 			"estimated_complexity": "moderate",
 			"last_validated": "2025-01-25T12:00:00Z",
-			"checksum": "5d41402abc4b2a76b9719d911017c592"
-		},
-		"docs/requirements/user-stories.md": {
-			"type": "file",
-			"status": "exists",
-			"priority": "high",
-			"purpose": "Human-readable user scenarios, personas, and acceptance criteria for feature development and testing validation",
-			"dependencies": ["docs/requirements/core-requirements.json"],
-			"consumers": ["developers", "stakeholders"],
-			"tags": ["documentation"],
-			"estimated_complexity": "moderate",
-			"last_validated": "2025-01-25T12:00:00Z",
-			"checksum": "new_user_stories_checksum"
-		},
-		"docs/requirements/technical-specs.md": {
-			"type": "file",
-			"status": "planned",
-			"priority": "medium",
-			"purpose": "Detailed technical specifications including performance requirements, security constraints, and integration standards",
-			"dependencies": ["docs/requirements/core-requirements.json", "docs/architecture/system-overview.md"],
-			"consumers": ["developers", "ai_assistants"],
-			"tags": ["documentation", "core"],
-			"estimated_complexity": "complex"
-		},
-		"docs/architecture/": {
-			"type": "directory",
-			"status": "planned",
-			"priority": "critical",
-			"purpose": "System architecture documentation including component design, data flow, and technology stack decisions",
-			"dependencies": ["docs/requirements/"],
-			"consumers": ["developers", "ai_assistants"],
-			"tags": ["core", "documentation"],
-			"estimated_complexity": "simple"
-		},
-		"docs/architecture/system-overview.md": {
-			"type": "file",
-			"status": "planned",
-			"priority": "critical",
-			"purpose": "High-level system architecture defining component relationships, technology stack, and architectural patterns",
-			"dependencies": ["docs/requirements/core-requirements.json"],
-			"consumers": ["developers", "ai_assistants"],
-			"tags": ["core", "documentation"],
-			"estimated_complexity": "complex",
-			"tech_debt_notes": [
-				{
-					"issue": "Technology stack selection pending - blocks all implementation decisions",
-					"severity": "critical",
-					"remediation_effort": "days",
-					"created_at": "2025-01-24"
-				}
-			]
-		},
-		"docs/architecture/database-schema.md": {
-			"type": "file",
-			"status": "planned", 
-			"priority": "high",
-			"purpose": "Complete database design including entity relationships, constraints, indexes, and data migration strategies",
-			"dependencies": ["docs/architecture/system-overview.md"],
-			"consumers": ["developers", "ai_assistants"],
-			"tags": ["core", "documentation"],
-			"estimated_complexity": "complex"
-		},
-		"docs/architecture/api-design.md": {
-			"type": "file",
-			"status": "planned",
-			"priority": "medium",
-			"purpose": "REST API specification with endpoint schemas, authentication flows, error handling, and rate limiting policies",
-			"dependencies": ["docs/architecture/system-overview.md", "docs/architecture/database-schema.md"],
-			"consumers": ["developers", "ai_assistants"],
-			"tags": ["documentation"],
-			"estimated_complexity": "complex"
+			"checksum": "0e7543d76cbf95a2ac8c1a0bf8c8294a"
 		},
 		"docs/llm-context/": {
 			"type": "directory",
@@ -128,7 +58,7 @@
 			"consumers": ["ai_assistants"],
 			"tags": ["tooling", "documentation"],
 			"estimated_complexity": "simple",
-			"last_validated": "2025-01-24T15:30:00Z",
+			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": null
 		},
 		"docs/llm-context/project-context.md": {
@@ -136,7 +66,7 @@
 			"status": "exists",
 			"priority": "critical",
 			"purpose": "Comprehensive project context for AI assistants including architectural decisions, constraints, and development patterns",
-			"dependencies": ["docs/requirements/core-requirements.json"],
+			"dependencies": ["docs/llm-context/core-requirements.json"],
 			"consumers": ["ai_assistants"],
 			"tags": ["tooling", "documentation"],
 			"estimated_complexity": "moderate",
@@ -151,37 +81,17 @@
 			"last_validated": "2025-01-25T11:48:00Z",
 			"checksum": "0dc31b2b6450616096d0172df5c6610f"
 		},
-		"docs/development/": {
-			"type": "directory",
-			"status": "planned",
-			"priority": "medium",
-			"purpose": "Development workflow documentation including setup procedures, coding standards, and deployment guidelines",
-			"dependencies": ["docs/architecture/"],
-			"consumers": ["developers"],
-			"tags": ["tooling", "documentation"],
-			"estimated_complexity": "simple"
-		},
-		"docs/development/setup-guide.md": {
-			"type": "file",
-			"status": "planned",
-			"priority": "high",
-			"purpose": "Local development environment setup including dependencies, configuration, and troubleshooting procedures",
-			"dependencies": ["docs/architecture/system-overview.md"],
-			"consumers": ["developers"],
-			"tags": ["tooling"],
-			"estimated_complexity": "moderate"
-		},
 		"docs/schemas/": {
 			"type": "directory", 
 			"status": "exists",
 			"priority": "medium",
 			"purpose": "JSON Schema definitions for structured data validation and AI assistant consumption",
-			"dependencies": [],
+			"dependencies": ["docs/"],
 			"consumers": ["build_system", "ai_assistants", "developers"],
 			"tags": ["config", "tooling"],
 			"estimated_complexity": "simple",
-			"last_validated": "2025-01-24T15:30:00Z",
-			"checksum":null
+			"last_validated": "2025-01-25T16:00:00Z",
+			"checksum": null
 		},
 		"docs/schemas/project-structure.schema.json": {
 			"type": "file",
@@ -192,18 +102,8 @@
 			"consumers": ["build_system", "ai_assistants"],
 			"tags": ["config", "tooling"],
 			"estimated_complexity": "complex",
-			"last_validated": "2025-01-24T15:30:00Z",
+			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": "d6041de5bed435d2ddedb1a455f6824c"
-		},
-		"src/": {
-			"type": "directory",
-			"status": "planned",
-			"priority": "medium",
-			"purpose": "Application source code organized with clear separation between frontend, backend, and shared utilities",
-			"dependencies": ["docs/architecture/system-overview.md"],
-			"consumers": ["developers", "build_system"],
-			"tags": ["core"],
-			"estimated_complexity": "simple"
 		},
 		"README.md": {
 			"type": "file",
@@ -214,18 +114,20 @@
 			"consumers": ["developers", "stakeholders", "ai_assistants"],
 			"tags": ["documentation"],
 			"estimated_complexity": "simple",
-			"last_validated": "2025-01-24T15:30:00Z",
-			"checksum": "dda2fa14ddbe30596832355583780a67"
+			"last_validated": "2025-01-25T16:00:00Z",
+			"checksum": "6df34e1c04e027c7df02082ff77d411d"
 		},
 		".github/": {
 			"type": "directory",
-			"status": "planned", 
+			"status": "exists", 
 			"priority": "medium",
 			"purpose": "GitHub-specific configuration including CI/CD workflows, issue templates, and pull request automation",
-			"dependencies": ["docs/development/"],
+			"dependencies": [],
 			"consumers": ["build_system", "developers"],
 			"tags": ["tooling", "deployment"],
-			"estimated_complexity": "moderate"
+			"estimated_complexity": "moderate",
+			"last_validated": "2025-01-25T16:00:00Z",
+			"checksum": null
 		},
 		".gitignore": {
 			"type": "file",
@@ -236,7 +138,7 @@
 			"consumers": ["developers", "build_system"],
 			"tags": ["config", "tooling"],
 			"estimated_complexity": "simple",
-			"last_validated": "2025-01-24T15:30:00Z",
+			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": "4cef2da1a839c5b2a5b0feb8bbc42562"
 		},
 		".gitattributes": {
@@ -248,26 +150,24 @@
 			"consumers": ["developers", "build_system"],
 			"tags": ["config"],
 			"estimated_complexity": "trivial",
-			"last_validated": "2025-01-24T15:30:00Z",
+			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": "05bdb783ee6514c8c072e47680af8ff7"
 		}
 	},
 	"dependency_graph": {
 		"critical_path": [
-			"docs/requirements/core-requirements.json",
-			"docs/llm-context/project-context.md", 
-			"docs/requirements/user-stories.md",
-			"docs/architecture/system-overview.md",
-			"docs/architecture/database-schema.md",
-			"docs/development/setup-guide.md"
+			"docs/llm-context/core-requirements.json",
+			"docs/llm-context/project-context.md",
+			"docs/llm-context/project-structure.json"
 		],
 		"parallel_groups": [
-			["docs/requirements/technical-specs.md", "docs/architecture/api-design.md"],
-			["schemas/project-structure.schema.json", "docs/development/setup-guide.md"],
-			[".github/", "src/"]
+			["docs/schemas/project-structure.schema.json", "package.json"],
+			[".github/", "README.md"]
 		],
 		"orphaned_nodes": [
-			"README.md"
+			".gitignore",
+			".gitattributes",
+			"package-lock.json"
 		]
 	}
 }

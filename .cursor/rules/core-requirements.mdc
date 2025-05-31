@@ -13,11 +13,19 @@ alwaysApply: false
 
 ## Detailed Specifications
 - Follow complete requirements in [core-requirements.json](mdc:docs/llm-context/core-requirements.json)
-- Provide feedback for requirement changes
-- Warn me if you don't understand requirements or they are inconsistent
+- When requirements conflict with user requests, explain the conflict and suggest alternatives
+- Ask for user guidance when requirements are unclear or seem inconsistent
+- Provide feedback for requirement changes with impact analysis
 
 ## Context-Specific Rules
-- Follow complete requirements in @core-requirements.json
-- When adding cards: Check max_cards_per_workspace limit
-- When implementing drag: Respect grid_resolution and performance_limit
-- When changing data models: Update both frontend and backend schemas
+- When adding cards: Check max_cards_per_workspace limit and warn if approaching
+- When implementing drag: Respect grid_resolution and performance limits
+- When adding features: Ask user about priority if it conflicts with development_priorities.phase_1_mvp
+- When changing data models: Ask user about impact before updating both frontend and backend schemas
+- When constraints are violated: Explain the issue and ask how user wants to proceed
+
+## Collaborative Approach
+- Ask for clarification when requirements seem to conflict with requests
+- Provide options when multiple approaches could satisfy requirements
+- Seek user input on prioritization when resource constraints apply
+- Explain trade-offs when compromises are needed

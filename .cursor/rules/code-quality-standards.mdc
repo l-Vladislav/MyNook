@@ -8,9 +8,9 @@ alwaysApply: true
 ## Core Code Quality
 - Write clean, self-documenting code with meaningful variable and function names
 - Prioritize code readability over cleverness - optimize for maintainability
-- Follow SOLID principles and established design patterns
+- Try to follow SOLID principles and established design patterns
 - Implement proper error handling with specific error types and descriptive messages
-- Use tabs instead of space (1 Tab 4 spaces)
+- Use tabs instead of space (1 Tab = 4 spaces)
 - Maximum line length: 120 characters for better readability across devices
 - Use camelCase for variables, functions, and methods
 - Use PascalCase for classes, interfaces, and components
@@ -20,15 +20,14 @@ alwaysApply: true
 - Learn from user feedback and adapt approach within the session
 - Reference core-requirements.json constraints before proposing solutions
 
-
 ## Cursor-Specific Development Rules
 - Stay focused on the current prompt/task - do not edit functions, routes, or components outside the current scope
-- Don't make unsolicited code improvements; if you see something that should be improved, ask the user in chat first
-- When modifying files, never leave code incomplete or with placeholder comments
-- Always aim to edit/add code fully with complete implementation
-- NEVER leave comments like "// ... (rest of the code remains unchanged)" or "// ... existing code ..." or equivalent placeholders
-- Complete all implementations in a single edit operation when possible
-- If a task requires multiple files, implement each file completely before moving to the next
-- Critical rules (never break): no placeholders, complete implementations
-- Flexible rules (can discuss): naming conventions, structure changes
-- Stay focused on current prompt, EXCEPT when fixing critical security issues or syntax errors
+- When you see potential improvements outside scope, ask permission before making changes
+- When encountering linter errors, ask user how they prefer to handle them rather than auto-fixing
+- For multi-file implementations, ask user which file to prioritize or start with
+- When information is unclear or missing, ask for user clarification rather than making assumptions
+- Complete implementations when possible, but use placeholder comments (like "// ... existing code ...") when context is unclear
+- When edit operations fail, ask user to manually apply changes rather than auto-retrying
+- For UI design decisions, ask user for styling preferences rather than assuming modern/beautiful defaults
+- Critical rules (user preference): collaborative approach, ask for direction when uncertain
+- Flexible rules (can auto-decide): syntax fixes, obvious bug corrections

@@ -5,16 +5,45 @@ alwaysApply: true
 ---
 # MyNook Project Structure
 
-## Project structure rules
-- Always follow the project structure requiremnents described in the file [project-structure.json](mdc:docs/llm-context/project-structure.json)
-- If you want to a new file or folder you need also add a structure node in the file [project-structure.json](mdc:docs/llm-context/project-structure.json)
-- Before adding a new node to the structure file [project-structure.json](mdc:docs/llm-context/project-structure.json) ask permission with fully decribed logic
-- While editing a file always check the purpose of this file
-- Auto-approve adding files to existing folders, ask permission only for new folder creation
+## Overview
+This document defines the project structure requirements for MyNook. All new files and folders must be added to `project-structure.json` to maintain consistency and enable proper dependency tracking.
 
-### Documentation Structure
+## Core Principles
+- **Documentation-first**: All major components must have corresponding documentation
+- **Collaborative approach**: When uncertain about structure decisions, ask for user guidance
+- **Conservative permissions**: Default to asking permission rather than auto-approving changes
+- **Purpose clarity**: Each file/folder must have a clear, documented purpose
+- **Dependency tracking**: Every file must declare its dependencies and consumers
+
+## Structure Guidelines
+- Always follow the project structure requirements described in [project-structure.json](mdc:docs/llm-context/project-structure.json)
+- Before adding any new file or folder, add a structure node in [project-structure.json](mdc:docs/llm-context/project-structure.json)
+- Ask permission before adding new nodes to the structure file with fully described logic
+- While editing a file, always check the documented purpose of that file
+- **Conservative approach**: Ask permission for both new files AND new folder creation for better oversight
+
+## Adding New Components
+
+### Requires Permission (Ask First)
+- Creating any new files or folders
+- Adding components outside the defined structure
+- Changing the purpose of existing directories
+- Modifying the project structure significantly
+
+### Process for New Additions
+1. Identify the intended location and its purpose
+2. Define the new component's:
+   - Purpose and scope
+   - Dependencies and consumers
+   - Priority level
+   - Estimated complexity
+3. Request permission with full justification
+4. Update `project-structure.json` after approval
+
+## Documentation Structure
 - `docs/llm-context/` - AI assistant context and guidance
 
-### Reference Files
+## Reference Files
 - **Complete Structure**: [project-structure.json](mdc:docs/llm-context/project-structure.json)
+- **Validation Schema**: [project-structure.schema.json](mdc:docs/schemas/project-structure.schema.json)
 - **Core Requirements**: [core-requirements.json](mdc:docs/llm-context/core-requirements.json)
