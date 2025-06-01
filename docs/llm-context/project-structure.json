@@ -37,6 +37,54 @@
 			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": null
 		},
+		"docs/architecture/": {
+			"type": "directory",
+			"status": "exists",
+			"priority": "critical",
+			"purpose": "System architecture documentation including component design, data flow, and technology stack decisions",
+			"dependencies": ["docs/requirements/"],
+			"consumers": ["developers", "ai_assistants"],
+			"tags": ["core", "documentation"],
+			"estimated_complexity": "simple",
+			"last_validated": "2025-01-25T16:30:00Z",
+			"checksum": null
+		},
+		"docs/architecture/system-overview.md": {
+			"type": "file",
+			"status": "exists",
+			"priority": "critical",
+			"purpose": "High-level system architecture defining component relationships, technology stack, and architectural patterns",
+			"dependencies": ["docs/llm-context/core-requirements.json"],
+			"consumers": ["developers", "ai_assistants"],
+			"tags": ["core", "documentation"],
+			"estimated_complexity": "complex",
+			"last_validated": "2025-01-25T16:30:00Z",
+			"checksum": null
+		},
+		"docs/architecture/database-schema.md": {
+			"type": "file",
+			"status": "exists", 
+			"priority": "high",
+			"purpose": "Complete database design including entity relationships, constraints, indexes, and data migration strategies",
+			"dependencies": ["docs/architecture/system-overview.md"],
+			"consumers": ["developers", "ai_assistants"],
+			"tags": ["core", "documentation"],
+			"estimated_complexity": "complex",
+			"last_validated": "2025-01-25T16:30:00Z",
+			"checksum": null
+		},
+		"docs/architecture/api-design.md": {
+			"type": "file",
+			"status": "exists",
+			"priority": "medium",
+			"purpose": "REST API specification with endpoint schemas, authentication flows, error handling, and rate limiting policies",
+			"dependencies": ["docs/architecture/system-overview.md", "docs/architecture/database-schema.md"],
+			"consumers": ["developers", "ai_assistants"],
+			"tags": ["documentation"],
+			"estimated_complexity": "complex",
+			"last_validated": "2025-01-25T16:30:00Z",
+			"checksum": null
+		},
 		"docs/llm-context/core-requirements.json": {
 			"type": "file",
 			"status": "exists",
@@ -105,6 +153,30 @@
 			"last_validated": "2025-01-25T16:00:00Z",
 			"checksum": "d6041de5bed435d2ddedb1a455f6824c"
 		},
+		"src/": {
+			"type": "directory",
+			"status": "exists",
+			"priority": "critical",
+			"purpose": "Application source code organized with clear separation between frontend, backend, and shared utilities",
+			"dependencies": ["docs/architecture/system-overview.md"],
+			"consumers": ["developers", "build_system"],
+			"tags": ["core"],
+			"estimated_complexity": "simple",
+			"last_validated": "2025-01-25T16:30:00Z",
+			"checksum": null
+		},
+		"src/frontend/": {
+			"type": "directory",
+			"status": "exists",
+			"priority": "critical",
+			"purpose": "Angular 17+ application source code with component-based architecture, Material UI, and Firebase integration",
+			"dependencies": ["src/", "docs/architecture/system-overview.md"],
+			"consumers": ["developers", "build_system"],
+			"tags": ["core", "frontend"],
+			"estimated_complexity": "moderate",
+			"last_validated": "2025-01-25T16:30:00Z",
+			"checksum": null
+		},
 		"README.md": {
 			"type": "file",
 			"status": "exists",
@@ -157,17 +229,18 @@
 	"dependency_graph": {
 		"critical_path": [
 			"docs/llm-context/core-requirements.json",
-			"docs/llm-context/project-context.md",
-			"docs/llm-context/project-structure.json"
+			"docs/architecture/system-overview.md",
+			"docs/architecture/database-schema.md",
+			"src/",
+			"src/frontend/"
 		],
 		"parallel_groups": [
-			["docs/schemas/project-structure.schema.json", "package.json"],
+			["docs/schemas/project-structure.schema.json", "docs/architecture/api-design.md"],
 			[".github/", "README.md"]
 		],
 		"orphaned_nodes": [
 			".gitignore",
-			".gitattributes",
-			"package-lock.json"
+			".gitattributes"
 		]
 	}
 }

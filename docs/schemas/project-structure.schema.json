@@ -147,7 +147,7 @@
 				"tags": {
 					"type": "array",
 					"items": {
-					"enum": ["core", "config", "documentation", "tooling", "testing", "deployment", "security"]
+					"enum": ["core", "config", "documentation", "tooling", "testing", "deployment", "security", "frontend", "backend"]
 					},
 					"uniqueItems": true,
 					"description": "Categorical tags for filtering and organization"
